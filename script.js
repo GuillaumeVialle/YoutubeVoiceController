@@ -5,16 +5,14 @@ function onYouTubeIframeAPIReady() {
     player = new YT.Player('video-placeholder', {
         width: 600,
         height: 400,
-        videoId: 'Xa0Q0J5tOP0',
-        playerVars: {
-            color: 'white',
-            playlist: 'feed/recommended'
-        },
+        videoId: 'LPTlvQ1Zet0',
         events: {
             onReady: initialize
         }
     });
 }
+
+
 
 function initialize(){
 
@@ -35,6 +33,12 @@ function initialize(){
 
     $('#volume-input').val(Math.round(player.getVolume()));
 }
+
+$('.playlist').on('click', function () {
+  console.log(this.value)
+  player.loadPlaylist({list: this.value, listType:"playlist"});
+});
+
 
 
 // This function is called by initialize()
@@ -78,6 +82,7 @@ $('#pause').on('click', function () {
 });
 
 
+
 // Sound volume
 
 
@@ -95,11 +100,11 @@ $('#mute-toggle').on('click', function() {
 });
 
 $('#volume-input-up').on('click', function () {
-    player.setVolume(player.getVolume() + 10);
+    player.setVolume(player.getVolume() + 35);
 });
 
 $('#volume-input-down').on('click', function () {
-    player.setVolume(player.getVolume() - 10);
+    player.setVolume(player.getVolume() - 35);
 });
 
 
@@ -148,16 +153,6 @@ function formatTime(time){
     seconds = seconds < 10 ? '0' + seconds : seconds;
 
     return minutes + ":" + seconds;
-}
-
-//play full screen
-function playFullscreen (){
-  player.playVideo();//won't work on mobile
-
-  var requestFullScreen = iframe.requestFullScreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullScreen;
-  if (requestFullScreen) {
-    requestFullScreen.bind(iframe)();
-  }
 }
 
 
