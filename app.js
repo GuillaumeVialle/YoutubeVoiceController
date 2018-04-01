@@ -49,13 +49,19 @@ recognition.onresult = function(event) {
 
   }
 
-  if (transcript.search("volume up") == 1 || transcript.search("volume up") == 0 || transcript.search("increase volume") == 1 || transcript.search("increase volume") == 0 || transcript.search("up") == 1 || transcript.search("up") == 0) {
+  if (transcript.indexOf("mute") != -1 ) {
+    console.log("Muting..")
+    document.getElementById('mute-toggle').click();
+
+  }
+
+  if (transcript.indexOf("volume up") != -1 ||  transcript.indexOf("increase volume") != -1 || transcript.indexOf("up") != -1) {
     console.log("Volume up..")
     document.getElementById('volume-input-up').click();
 
   }
 
-  if (transcript.search("volume down") == 1 || transcript.search("volume down") == 0 || transcript.search("decrease volume") == 1 || transcript.search("decrease volume") == 0 || transcript.search("down") == 1 || transcript.search("down") == 0 ) {
+  if (transcript.indexOf("volume down") != -1 ||  transcript.indexOf("decrease volume") != -1 || transcript.indexOf("down") != -1 ) {
     console.log("Volume down..")
     document.getElementById('volume-input-down').click();
 
