@@ -8,7 +8,7 @@ function onYouTubeIframeAPIReady() {
         videoId: 'Xa0Q0J5tOP0',
         playerVars: {
             color: 'white',
-            playlist: 'taJ60kskkns,FG0fTKAqZ5g'
+            playlist: 'feed/recommended'
         },
         events: {
             onReady: initialize
@@ -94,8 +94,12 @@ $('#mute-toggle').on('click', function() {
     }
 });
 
-$('#volume-input').on('change', function () {
-    player.setVolume($(this).val());
+$('#volume-input-up').on('click', function () {
+    player.setVolume(player.getVolume() + 10);
+});
+
+$('#volume-input-down').on('click', function () {
+    player.setVolume(player.getVolume() - 10);
 });
 
 
