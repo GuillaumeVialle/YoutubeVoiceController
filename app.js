@@ -55,13 +55,13 @@ recognition.onresult = function(event) {
 
   }
 
-  if (transcript.indexOf("volume up") != -1 ||  transcript.indexOf("increase volume") != -1 || transcript.indexOf("up") != -1) {
+  if (transcript.indexOf("volume up") != -1 ||  transcript.indexOf("increase") != -1 || transcript.indexOf("up") != -1) {
     console.log("Volume up..")
     document.getElementById('volume-input-up').click();
 
   }
 
-  if (transcript.indexOf("volume down") != -1 ||  transcript.indexOf("decrease volume") != -1 || transcript.indexOf("down") != -1 ) {
+  if (transcript.indexOf("volume down") != -1 ||  transcript.indexOf("decrease") != -1 || transcript.indexOf("down") != -1 ) {
     console.log("Volume down..")
     document.getElementById('volume-input-down').click();
 
@@ -101,16 +101,16 @@ recognition.onerror = function(event) {
   };
 }
 
-// function refresh(){
-//     console.log('Refresh...')
-//     recognition.stop();
-//     console.log('Voice recognition paused.');
-//     recognition.start();
-// }
-//
-// setInterval(function(){
-//   refresh()
-// }, 30000)
+function refresh(){
+    console.log('Refresh...')
+    recognition.abort();
+    console.log('Voice recognition paused.');
+    recognition.start();
+}
+
+setInterval(function(){
+  refresh()
+}, 30000)
 
 
 
