@@ -150,6 +150,16 @@ function formatTime(time){
     return minutes + ":" + seconds;
 }
 
+//play full screen
+function playFullscreen (){
+  player.playVideo();//won't work on mobile
+
+  var requestFullScreen = iframe.requestFullScreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullScreen;
+  if (requestFullScreen) {
+    requestFullScreen.bind(iframe)();
+  }
+}
+
 
 $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
