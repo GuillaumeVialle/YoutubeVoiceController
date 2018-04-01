@@ -4,7 +4,7 @@ try {
   recognition.start();
 }
 catch(e) {
-  console.error(e);
+  //console.error(e);
 }
 
 var noteContent = '';
@@ -17,7 +17,7 @@ recognition.continuous = true;
 
 recognition.onresult = function(event) {
 
-  console.log(recognition)
+  //console.log(recognition)
 
   var current = event.resultIndex;
 
@@ -35,43 +35,43 @@ recognition.onresult = function(event) {
 
   noteTextarea.text(transcript);
   if (transcript.indexOf("play") != -1 ) {
-    console.log("PLaying..")
+    //console.log("PLaying..")
     document.getElementById('play').click();
     refresh()
   }
 
   if (transcript.indexOf("pause") != -1 || transcript.indexOf("stop") != -1 ) {
-    console.log("Pausing..")
+    //console.log("Pausing..")
     document.getElementById('pause').click();
     refresh()
   }
 
   if (transcript.indexOf("mute") != -1  || transcript.indexOf("volume of") != -1 ) {
-    console.log("Muting..")
+    //console.log("Muting..")
     document.getElementById('mute-toggle').click();
     refresh()
   }
 
   if (transcript.indexOf("volume up") != -1 ||  transcript.indexOf("increase") != -1 || transcript.indexOf("up") != -1) {
-    console.log("Volume up..")
+    //console.log("Volume up..")
     document.getElementById('volume-input-up').click();
     refresh()
   }
 
   if (transcript.indexOf("volume down") != -1 ||  transcript.indexOf("decrease") != -1 || transcript.indexOf("down") != -1 ) {
-    console.log("Volume down..")
+    //console.log("Volume down..")
     document.getElementById('volume-input-down').click();
     refresh()
   }
 
   if (transcript.indexOf("next") != -1 ) {
-    console.log("Next Vid..")
+    //console.log("Next Vid..")
     document.getElementById('next').click();
     refresh()
   }
 
   if (transcript.indexOf("prev") != -1) {
-    console.log("Prev Vid..")
+    //console.log("Prev Vid..")
     document.getElementById('prev').click();
     refresh()
   }
@@ -100,10 +100,16 @@ recognition.onerror = function(event) {
 function refresh(){
   recognition.abort();
   setInterval(function() {
-    console.log('Refresh...');
-    recognition.start();
+    //console.log('Refresh...');
+
+    try {
+      recognition.start();
+    } catch (e) {
+      //console.log(e)
+    }
+
   }, 5000);
-  console.log('Restarted...');
+  //console.log('Restarted...');
 
 
 }
@@ -123,5 +129,5 @@ noteTextarea.on('input', function() {
 
 $('#pause-btn').on('click', function(e) {
   recognition.stop();
-  console.log('Voice recognition paused.');
+  //console.log('Voice recognition paused.');
 });

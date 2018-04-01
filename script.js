@@ -35,7 +35,7 @@ function initialize(){
 }
 
 $('.playlist').on('click', function () {
-  console.log(this.value)
+  //console.log(this.value)
   player.loadPlaylist({list: this.value, listType:"playlist"});
 });
 
